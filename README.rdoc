@@ -4,6 +4,9 @@ hospital_day20 created 2 Feb 2015:
 
 -need to add clinic id to patients on rake_task
 
+-need to clean up and "prettyfy" all pages
+
+
 
 
 --------------------------------------------------------------------------------------------------
