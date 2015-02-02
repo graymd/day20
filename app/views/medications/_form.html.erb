@@ -1,0 +1,30 @@
+<%= form_for [@medication] do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label :company %>
+  <%= f.text_field :company %>
+  <br>
+  <%= f.label :adverse_reactions %>
+  <%= f.text_area :adverse_reactions %>
+  <br>
+  <%= f.label :generic_option %>
+  <%= f.radio_button(:generic_option, 1) %>
+  <%= f.label(:generic_option, "yes") %>
+  <%= f.radio_button(:generic_option, 0) %>
+  <%= f.label(:generic_option, "no") %>
+  <br>
+
+  <br>
+  <% @patients.each do |patient| %>
+    <%= check_box_tag 'medication[patient_ids][]', patient.id, @medication.patients.include?(patient) %>
+    <%= patient.last_name %>
+    <br>
+ <% end %>
+  <br>
+  <%= f.submit %>
+<% end %>
+<br>
+<%= link_to "Cancel", medications_path %>
+|
+<%= link_to "Return to Main", root_path %>

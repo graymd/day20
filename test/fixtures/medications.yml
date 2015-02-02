@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  company: MyString
+  adverse_reactions: MyString
+  generic_option: false
+
+two:
+  name: MyString
+  company: MyString
+  adverse_reactions: MyString
+  generic_option: false

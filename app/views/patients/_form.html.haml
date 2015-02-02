@@ -1,0 +1,36 @@
+= form_for([@clinic, @patient]) do |f|
+  - if @patient.errors.any?
+    %p#notice=notice
+    - @patient.errors.full_messages.each do |message|
+      = message
+      %br/
+%br/
+= form_for [@clinic, @patient] do |f|
+  %strong= f.label :first_name
+  = f.text_field :first_name
+  %br/
+  %strong= f.label :last_name
+  = f.text_field :last_name
+  %br/
+  %strong= f.label :date_of_birth
+  = f.date_field :date_of_birth, :start_year => Date.today.year - 110, :end_year => Date.today.year
+  %br/
+  %strong= f.label :description
+  = f.text_field :description
+  %br/
+  %strong= f.label :gender
+  = f.radio_button(:gender, "male")
+  = f.label(:gender, "male")
+  = f.radio_button(:gender, "female")
+  = f.label(:gender, "female")
+  %br/
+  %strong= f.label :blood_type
+  = f.select :blood_type, options_for_select(Patient::BLOOD_TYPE_OPTIONS, f.object.blood_type), include_blank: "---Select---"
+  %br/
+  - @medications.each do |medication|
+    = check_box_tag 'patient[medication_ids][]', medication.id, @patient.medications.include?(medication)
+    = medication.name
+  %br/
+  = f.submit
+= link_to "Cancel", clinic_path(@clinic)
+= link_to "Return to Main", root_path

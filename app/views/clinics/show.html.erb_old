@@ -1,0 +1,83 @@
+<strong> <h1>Clinic Info: </h1></strong>
+<strong>Clinic Name:</strong>
+<%= @clinic.name %>
+<br>
+<strong>Street Address:</strong>
+<%= @clinic.st_address %>
+<br>
+<strong>City:</strong>
+<%= @clinic.city %>
+<br>
+<strong>State:</strong>
+<%= @clinic.state %>
+<br>
+<%= link_to "Edit Clinic", edit_clinic_path(@clinic) %>
+|
+<%= link_to "Delete Clinic", clinic_path(@clinic), method: :delete %>
+<br>
+<%= link_to "Return to Clinics", clinics_path %>
+|
+<%= link_to "Return to Main", root_path %>
+<br>
+<br>
+<p>
+  <strong>Patient List:</strong>
+  <%= link_to "Add Patient", new_clinic_patient_path(@clinic) %>
+  <br>
+  <% @patients.each do |patient| %>
+    <li>
+      <strong>Name:</strong>
+      <%= link_to patient.last_name + ", " + patient.first_name, clinic_patient_path(@clinic, patient) %>
+      <br>
+      <strong>Date of Birth:</strong>
+      <%= patient.date_of_birth %>
+      <br>
+      <strong>Description:</strong>
+      <%= patient.description %>
+      <br>
+      <strong>Gender:</strong>
+      <%= patient.gender %>
+      <br>
+      <strong>Blood Type:</strong>
+      <%= patient.blood_type %>
+      <br>
+      <%= link_to "Edit Patient Information", edit_clinic_patient_path(@clinic, patient) %>
+      |
+      <%= link_to "Delete Patient Information", clinic_patient_path(@clinic, patient), method: :delete %>
+    </li>
+    <br>
+  <% end %>
+</p>
+<strong>Clinic Doctors:</strong>
+<br>
+<ul>
+  <% @doctors.each do |doctor| %>
+    <li>
+      <%= doctor.doctor_name %>
+      <%= link_to "Delete Doctor", destroy_doctor_clinic_path(doctor), method: :delete %>
+      <br>
+    </li>
+  <% end %>
+</ul>
+<%= form_for @doctor, url: create_doctor_clinic_path(@clinic) do |f| %>
+  <%= f.label :doctor_name %>
+  <%= f.text_area :doctor_name %>
+  <br>
+  <%= f.submit %>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

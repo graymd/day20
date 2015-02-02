@@ -1,0 +1,75 @@
+Hospital_v5 created 28 Jan 2015:
+
+-added gem 'faker' to Gemfile
+
+-created rake task to create new data for clinics, patients and medicaitons.  Currently each patient only has one medication which is completely different from all others.  Would like to create 4 under each.  Needs to figure out how to add doctors data. (in CMD run "rake create_data")
+
+-
+-------------------------------------------------------------------------------
+Hospital_v4 created 27 Jan 2015:
+
+-added correct redirect for delete doctor from patient list. 
+
+-added bootstrap "starter-template"
+
+-formatted pages with bootstrap
+
+-fixed patient form validation for create and update.  error was not showing up on form page and success alert was not showing up on hospital show page.
+
+-cannot figure out how to better align the doctor name entry text box on clinics and patient show pages. 
+
+-------------------------------------------------------------------------------
+
+Hospital_v3 created 26 Jan 2015:
+"Day 14 - January 26th 2015 - (Hospital v3)
+
+I want you to create a new entity called "Doctors" that live inside of hospitals and/or patients. The Doctors should have a polymorphic relationship between patients and Hospitals. They should not belong to both. Think of these doctors as independent physicians who work wherever they want, consulting for the patients who go to the hospital.
+
+I also want you to change the relationship between patients and medications. Make them go through a join table
+
+Please use HAML."
+
+I have been unable to figure out how to redirect back to the patient show page after deleting a doctor from the list.
+
+I am currently working on changing clinics show.html.erb to show.html.haml without use of converter for practice.
+------------------------------------------------------------------------------------
+
+The project was started 21 Jan 2015.  
+The project runs on ruby 2.2.0 and Rails 4.2.0.
+21 Jan 2015:
+---------------------------------------------------------------------------------------------
+day12:
+"Project assignment:
+"We are creating a tracking system for a patient as he/she goes through a hospital. Today you will create the basic CRUD.
+
+First name (Text field)
+Last name (Text field)
+Date of Birth (date selector field - Only dates 10 years or earlier)
+Description (text field - Will be a description of why the patient is at the hospital)
+Gender (Radio button)
+Blood Type (Select box)
+All of these fields are required!"
+
+day13:
+Change your relationships up a bit. You need to add Hospitals/Facilities and Medications. Your patients should live under your facilities and your medications should live under your patients. You should be able to create multiple facilities and have many patients there. Your medications should also be related to your patients. You should be able to have many medications.
+----------------------------------------------------------------------------------------------
+All requirements of the HW assingment have been completed.
+
+Database requires mysql2 and Sequel Pro.  In order to initiate the database use "rake db:create" and then migrate with "rake db:migrate".
+
+In order to preform the validation on the DOB, http://www.software-thoughts.com/2012/08/validating-users-age-in-rails.html was used as reference.
+
+Current controllers:
+/home_controller.rb
+/patient_controller.rb
+
+Current Models:
+/patient.rb
+
+Current Views:
+/home/index.html.erb
+/patients/_form.html.erb
+edit.html.erb
+index.html.erb
+new.html.erb
+show.html.erb

@@ -1,0 +1,28 @@
+<h1><strong>Clinics</strong></h1>
+
+<%= link_to "Add New Clinic", new_clinic_path %>
+<br>
+<%= link_to "Return to Main", root_path %>
+<br>
+<ul>
+  <% @clinics.each do |clinic| %>
+    <li>
+      <strong>Clinic Name:</strong>
+      <%= link_to clinic.name, clinic_path(clinic) %>
+      <br>
+      <strong>Street Address:</strong>
+      <%= clinic.st_address %>
+      <br>
+      <strong>City:</strong>
+      <%= clinic.city %>
+      <br>
+      <strong>State:</strong>
+      <%= clinic.state %>
+    </li>
+    <%= link_to "Edit Clinic", edit_clinic_path(clinic) %>
+    |
+    <%= link_to "Delete Clinic", clinic_path(clinic), method: :delete %>
+    <br>
+    <br>
+  <% end %>
+</ul>

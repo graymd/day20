@@ -1,0 +1,29 @@
+%h1 
+  %strong
+    %u Medications
+%h4
+  = link_to "Add New Medication", new_medication_path
+  |
+  = link_to "Return to Main", root_path
+%br/
+%div.col-md-4.col-md-offset-5
+  %p{class: "text-left"}
+    - @medications.each do |medication|
+      %strong Medication Name:
+      = link_to medication.name, medication_path(medication)
+      %br/
+      %strong Company:
+      = medication.company
+      %br/
+      %strong Adverse Reactions:
+      = medication.adverse_reactions
+      %br/
+      %strong Generic Options Available:
+      = medication.generic_option
+      %br/
+      = link_to "Edit Medication", edit_medication_path(medication)
+      |
+      \#{link_to "Delete Medication", medication_path(medication), method: :delete}
+      %br/
+      %br
+    = link_to "Return to Main", root_path

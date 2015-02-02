@@ -1,0 +1,16 @@
+= form_for @clinic do |f|
+  = f.label :name
+  = f.text_field :name
+  %br
+  = f.label :st_address
+  = f.text_field :st_address
+  %br
+  = f.label :city
+  = f.text_field :city
+  %br
+  = f.label :state
+  = f.select :state, options_for_select(Clinic::US_STATE_OPTIONS, f.object.state), include_blank: "----Select State___"
+  %br
+  = f.submit
+%br
+= link_to "Cancel and Return to Clinics", clinics_path
