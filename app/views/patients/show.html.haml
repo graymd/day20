@@ -1,11 +1,46 @@
 %br/
-%strong
-  %h1
-    %u 
-      Patient:
-      = @patient.last_name + ", " + @patient.first_name
-%br/
-%div.col-md-4.col-md-offset-5
+.col-md-4.col-md-offset-4
+  .text-center
+    %strong
+      %h1
+        %u 
+          Patient:
+          = @patient.last_name + ", " + @patient.first_name
+      = "Patient Status: "
+      = @patient.workflow_state
+    %br
+    -if @patient.workflow_state == "waiting_room"
+      = link_to "To Doctor", to_doctor_patient_clinic_patient_path(@clinic, @patient), method: :patch
+      |
+      = link_to "To X-ray", to_xray_patient_clinic_patient_path(@clinic, @patient), method: :patch
+      |
+      = link_to "To Surgery", to_surgery_patient_clinic_patient_path(@clinic, @patient), method: :patch
+      |
+      = link_to "Leave", leave_patient_clinic_patient_path(@clinic, @patient), method: :patch
+    -elsif @patient.workflow_state == "doctor_checkup"
+      = link_to "To X-ray", to_xray_patient_clinic_patient_path(@clinic, @patient), method: :patch
+      |
+      = link_to "To Surgery", to_surgery_patient_clinic_patient_path(@clinic, @patient), method: :patch
+      |
+      = link_to "To Pay Bill", to_pay_bill_patient_clinic_patient_path(@clinic, @patient), method: :patch
+    -elsif @patient.workflow_state == "xray"
+      = link_to "To Doctor", to_doctor_patient_clinic_patient_path(@clinic, @patient), method: :patch
+      |
+      = link_to "To Surgery", to_surgery_patient_clinic_patient_path(@clinic, @patient), method: :patch
+      |
+      = link_to "To Pay Bill", to_pay_bill_patient_clinic_patient_path(@clinic, @patient), method: :patch
+    -elsif @patient.workflow_state == "surgery"
+      = link_to "To Doctor", to_doctor_patient_clinic_patient_path(@clinic, @patient), method: :patch
+      |
+      = link_to "To X-ray", to_xray_patient_clinic_patient_path(@clinic, @patient), method: :patch
+      |
+      = link_to "To Pay Bill", to_pay_bill_patient_clinic_patient_path(@clinic, @patient), method: :patch
+    -elsif @patient.workflow_state == "pay_bill"
+      = link_to "Leave", leave_patient_clinic_patient_path(@clinic, @patient), method: :patch
+    -elsif @patient.workflow_state == "left"
+      = link_to "Back in to Waiting Room", wait_patient_clinic_patient_path(@clinic, @patient), method: :patch
+    %br
+    %br
   %p{class: "text-left"}
     %strong Patient DOB:
     = @patient.date_of_birth

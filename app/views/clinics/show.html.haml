@@ -30,27 +30,16 @@
         = link_to "Add Patient", new_clinic_patient_path(@clinic)
     %br/
     %br
+    %strong Patient names:
+    %br
+    %ul
     - @patients.each do |patient|
-      %strong Name:
-      = link_to patient.last_name + ", " + patient.first_name, clinic_patient_path(@clinic, patient)
-      %br/
-      %strong Date of Birth:
-      = patient.date_of_birth
-      %br/
-      %strong Description:
-      = patient.description
-      %br/
-      %strong Gender:
-      = patient.gender
-      %br/
-      %strong Blood Type:
-      = patient.blood_type
-      %br/
-      = link_to "Edit Patient Information", edit_clinic_patient_path(@clinic, patient)
-      |
-      \#{link_to "Delete Patient Information", clinic_patient_path(@clinic, patient), method: :delete}
-      %br
-      %br 
+      %li
+        = "Patient Status: "
+        = patient.workflow_state
+        = link_to patient.last_name + ", " + patient.first_name, clinic_patient_path(@clinic, patient)
+    %br
+    %br
     %strong Clinic Doctors:
     %br
     - @doctors.each do |doctor|

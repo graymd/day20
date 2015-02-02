@@ -1,4 +1,12 @@
 class PatientsController < ApplicationController
+  before_action :set_patient, only: [
+    :show,
+    :edit,
+    :update,
+    :destroy,
+    :wait_patient
+  ]
+
   def index
     @patients = Patient.all
   end
@@ -74,6 +82,48 @@ class PatientsController < ApplicationController
     redirect_to clinic_patient_path(@doctor.doctorable.clinic, @doctor.doctorable)
   end
 
+  def wait_patient
+    @clinic = Clinic.find params[:clinic_id]
+    @patient = @clinic.patients.find params[:id]
+    @patient.wait!
+    redirect_to clinic_patient_path(@clinic, @patient)
+  end
+
+  def to_doctor_patient
+    @clinic = Clinic.find params[:clinic_id]
+    @patient = @clinic.patients.find params[:id]
+    @patient.to_doctor!
+    redirect_to clinic_patient_path(@clinic, @patient)
+  end
+
+  def to_xray_patient
+    @clinic = Clinic.find params[:clinic_id]
+    @patient = @clinic.patients.find params[:id]
+    @patient.to_xray!
+    redirect_to clinic_patient_path(@clinic, @patient)
+  end
+
+  def to_surgery_patient
+    @clinic = Clinic.find params[:clinic_id]
+    @patient = @clinic.patients.find params[:id]
+    @patient.to_surgery!
+    redirect_to clinic_patient_path(@clinic, @patient)
+  end
+
+  def to_pay_bill_patient
+    @clinic = Clinic.find params[:clinic_id]
+    @patient = @clinic.patients.find params[:id]
+    @patient.to_pay_bill!
+    redirect_to clinic_patient_path(@clinic, @patient)
+  end
+
+  def leave_patient
+    @clinic = Clinic.find params[:clinic_id]
+    @patient = @clinic.patients.find params[:id]
+    @patient.leave!
+    redirect_to clinic_patient_path(@clinic, @patient)
+  end
+
 private
   def patient_params
     params.require(:patient).permit(
@@ -88,7 +138,11 @@ private
   end
 
   def set_clinic
-    @clinic = Clinic.find(params[:id])
+    @clinic = Clinic.find(params[:clinic_id])
+  end
+
+  def set_patient
+    @patient = Patient.find params[:id]
   end
 
   def doctor_params

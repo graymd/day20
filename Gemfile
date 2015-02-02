@@ -21,8 +21,13 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
-gem 'faker'
+
 #use faker to create random data for databse with rake create_data
+gem 'faker'
+
+#gem for using workflows
+gem 'workflow'
+
 gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

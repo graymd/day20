@@ -21,6 +21,12 @@ Rails.application.routes.draw do
         member do
           post :create_doctor
           delete :destroy_doctor
+          patch :wait_patient
+          patch :to_doctor_patient
+          patch :to_xray_patient
+          patch :to_surgery_patient
+          patch :to_pay_bill_patient
+          patch :leave_patient
         end
       end
     end

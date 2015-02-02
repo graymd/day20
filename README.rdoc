@@ -1,3 +1,12 @@
+hospital_day20 created 2 Feb 2015:
+
+-need to fix flash alerts
+
+-need to add clinic id to patients on rake_task
+
+
+
+--------------------------------------------------------------------------------------------------
 Hospital_v5 created 28 Jan 2015:
 
 -added gem 'faker' to Gemfile
