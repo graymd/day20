@@ -9,7 +9,6 @@
       = "Patient Status: "
       = workflow_state_helper(@patient)
       %br
-      = workflow_state_links(@clinic, @patient)
     %br
     -if @patient.workflow_state == "waiting_room"
       = link_to "To Doctor", to_doctor_patient_clinic_patient_path(@clinic, @patient), method: :patch
