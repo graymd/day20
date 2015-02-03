@@ -1,23 +1,24 @@
-%h1
-  %strong
-    %u
-      .col-md-12
-        .text-center
-          Clinics
-          %h4
-            = link_to "Add New Clinic", new_clinic_path
-            |
-            = link_to "Return to Main", root_path
+.col-md-12
+  .col-md-4.col-md-offset-4
+    .jumbotron
+      .text-center
+        %strong
+          %h3
+            %u
+              Clinics
+            %br
+          = link_to "Add New Clinic", new_clinic_path
           %br
 / %p{class: "text-left"}
-- @clinics.each do |clinic|
-  .col-md-4.text-center
-    %strong
-      Clinic Name:
-    = link_to clinic.name, clinic_path(clinic)
-    %br
-    = link_to "Edit Clinic", edit_clinic_path(clinic)
-    |
-    = link_to "Delete Clinic", clinic_path(clinic), method: :delete
-    %br
-    %br
+.row
+  - @clinics.each do |clinic|
+    .col-md-4.text-center
+      .list-group-item
+        %strong
+          Clinic Name:
+        = link_to clinic.name, clinic_path(clinic)
+        %br
+        = link_to "Edit Clinic", edit_clinic_path(clinic)
+        |
+        = link_to "Delete Clinic", clinic_path(clinic), method: :delete
+      %br

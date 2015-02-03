@@ -1,10 +1,18 @@
 hospital_day20 created 2 Feb 2015:
 
+-cleaned up formatting on patient show page
+
+-made some updates to navbar; add navbar partials and add different areas to checkout in navbar dropdown; get data on right of nav to be inline.
+
+-added quiet assets gym
+
 -need to fix flash alerts
 
 -need to add clinic id to patients on rake_task
 
 -need to clean up and "prettyfy" all pages
+
+-need to fix footer
 
 
 
